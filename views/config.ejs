@@ -1,0 +1,76 @@
+<h1 class="page-header">Marketing Groups</h1>
+    <form>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#importModal">Import
+        </button>
+        <button type="submit" value="Export" name="submit"
+                formaction="{{contextPath}}/applicationConfig/api/marketingGroup/export"
+                formmethod="post" formenctype="multipart/form-data" class="btn btn-primary">Export
+        </button>
+        <input type="hidden" value="MARKETING_GROUPS" name="type">
+        <hr>
+        <table id="marketing-group-table" class="table table-striped">
+            <thead>
+            <tr>
+                <th>Checkbox</th>
+                <th>Marketing Group</th>
+                <th>System</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </form>
+    <!-- Import Modal -->
+    <div id="importModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <form class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Import Configuration</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" value="MARKETING_GROUPS" name="type">
+                    <input type="file" name="importFile" class="form-control" accept=".json" required><br>
+                </div>
+                <div class="modal-footer">
+                    <button id="import" type="submit" class="btn btn-primary"
+                            formaction="{{contextPath}}/applicationConfig/api/marketingGroup/import"
+                            formmethod="post" formenctype="multipart/form-data">Import
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id="modalTitle" class="modal-title">Create new entry</h4>
+                </div>
+                <form id="editingForm" class="form-horizontal" action="#">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">Marketing Groups:</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="groupName" required>
+                            </div>
+                        </div>
+                        <input type="hidden" name="id"/>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btnSave" type="submit" class="btn btn-primary">Create</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+</div>
